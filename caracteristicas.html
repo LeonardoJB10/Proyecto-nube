@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Características técnicas | Azure Static Web Apps & Oracle Cloud VM</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a class="brand" href="index.html">CloudWeb<span>Lab</span></a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="caracteristicas.html" class="active">Características técnicas</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-head">
+      <h1>Características técnicas</h1>
+      <p>
+        Especificaciones de infraestructura, red, seguridad y automatización observadas en
+        Azure Static Web Apps y en la práctica de Oracle Cloud Compute VM.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Especificaciones del laboratorio Oracle Cloud Compute VM</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Componente</th>
+              <th>Configuración / Detalle técnico</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sistema operativo</td>
+              <td>Oracle Linux 7.9 (imagen base de instancia Always Free)</td>
+            </tr>
+            <tr>
+              <td>Forma de cómputo (Shape)</td>
+              <td><code>VM.Standard.E2.1.Micro</code> (1 OCPU, 1 GB de memoria, 0.48 Gbps de ancho de banda)</td>
+            </tr>
+            <tr>
+              <td>Autenticación y acceso</td>
+              <td>Par de llaves SSH (<code>id_rsa</code> / <code>id_rsa.pub</code> en <code>~/.ssh</code>) y conexión vía Git Bash con usuario <code>opc</code></td>
+            </tr>
+            <tr>
+              <td>Entorno de ejecución</td>
+              <td>Node.js instalado mediante repositorios <code>oracle-nodejs-release-el7</code> y <code>oracle-release-el7</code></td>
+            </tr>
+            <tr>
+              <td>Aplicación web (<code>index.js</code>)</td>
+              <td>Servidor HTTP nativo en <code>0.0.0.0:3000</code>; responde <code>Hello World</code> en <code>GET /greeting</code> y <code>Healthy</code> en otras rutas</td>
+            </tr>
+            <tr>
+              <td>Firewall y red (VCN)</td>
+              <td>Apertura de puerto <code>3000/tcp</code> con <code>firewall-cmd</code> y regla de ingreso <em>Stateless</em> (CIDR <code>0.0.0.0/0</code>, puerto destino <code>3000</code>, protocolo TCP)</td>
+            </tr>
+            <tr>
+              <td>Persistencia y arranque</td>
+              <td>Servicio <code>startwebserver.service</code> en <code>/etc/systemd/system/</code> habilitado con <code>systemctl enable</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid-2 mt-24">
+      <article class="card">
+        <h2>Ventajas</h2>
+        <ul class="clean-list">
+          <li><strong>Azure Static Web Apps:</strong> despliegue continuo ágil, bajo mantenimiento de servidor y escalabilidad automática para contenido estático.</li>
+          <li><strong>Oracle Cloud VM:</strong> control total del entorno Linux, personalización de servicios y capa <em>Always Free</em> para prácticas de infraestructura.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Desventajas</h2>
+        <ul class="clean-list">
+          <li><strong>Azure Static Web Apps:</strong> limitado a arquitecturas estáticas/<em>serverless</em> sin administración directa de un SO completo.</li>
+          <li><strong>Oracle Cloud VM:</strong> mayor curva de configuración manual (llaves SSH, <em>firewall</em>, seguridad de red y demonios del sistema) y recursos limitados en el nivel gratuito.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Práctica académica de Servicios en la Nube — Azure Static Web Apps y Oracle Academy.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

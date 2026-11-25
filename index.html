@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio | Azure Static Web Apps & Oracle Cloud VM</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a class="brand" href="index.html">CloudWeb<span>Lab</span></a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="index.html" class="active">Inicio</a>
+        <a href="caracteristicas.html">Características técnicas</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="badge">Computación en la Nube</span>
+      <h1>Azure Static Web Apps y Oracle Cloud Compute VM</h1>
+      <p>
+        Comparativa práctica entre el alojamiento de aplicaciones web estáticas en
+        <strong>Azure Static Web Apps</strong> y el aprovisionamiento de un servidor web en
+        <strong>Oracle Cloud Infrastructure (OCI)</strong> con Oracle Linux y Node.js.
+      </p>
+      <div class="hero-actions">
+        <a href="caracteristicas.html" class="btn btn-primary">Ver características técnicas</a>
+        <button id="btn-demo" class="btn btn-secondary" type="button">Probar estado del flujo</button>
+      </div>
+      <p id="demo-status" class="status-msg" role="status"></p>
+    </section>
+
+    <section class="grid-2">
+      <article class="card">
+        <h2>Azure Static Web Apps</h2>
+        <p>
+          Servicio administrado que compila y publica sitios web estáticos y aplicaciones
+          <em>frontend</em> modernas directamente desde un repositorio Git (como GitHub),
+          integrando flujos de trabajo CI/CD y distribución global.
+        </p>
+        <ul class="clean-list">
+          <li>Despliegue automático mediante GitHub Actions.</li>
+          <li>Certificados SSL administrados y red de entrega global.</li>
+          <li>Ideal para HTML, CSS, JavaScript y frameworks modernos.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Oracle Cloud Compute VM (Linux Web Services)</h2>
+        <p>
+          Máquina virtual en la nube (<em>Always Free</em> con forma <code>VM.Standard.E2.1.Micro</code>
+          y Oracle Linux) donde se configura manualmente el sistema operativo, el servidor Node.js,
+          el <em>firewall</em>, las reglas de red y el servicio <code>systemd</code>.
+        </p>
+        <ul class="clean-list">
+          <li>Acceso completo al sistema operativo vía SSH (usuario <code>opc</code>).</li>
+          <li>Servidor HTTP en Node.js escuchando en el puerto <code>3000</code>.</li>
+          <li>Regla de ingreso stateless en la VCN y arranque automático con <code>systemd</code>.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Práctica académica de Servicios en la Nube — Azure Static Web Apps y Oracle Academy.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
